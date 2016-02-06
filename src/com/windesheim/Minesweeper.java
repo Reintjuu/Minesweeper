@@ -18,7 +18,7 @@ public class Minesweeper
 		this.width = width;
 		this.height = height;
 		this.minesAmount = minesAmount;
-		field = new int[width][height];
+		field = new int[height][width];
 	}
 
 	public String toString()

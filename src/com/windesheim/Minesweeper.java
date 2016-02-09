@@ -25,11 +25,11 @@ public class Minesweeper
 	{
 		String string = "";
 
-		for (int i = 0; i < field.length; i++)
+		for (int y = 0; y < field.length; y++)
 		{
-			for (int j = 0; j < field[i].length; j++)
+			for (int x = 0; x < field[y].length; x++)
 			{
-				string += field[i][j] + "  ";
+				string += field[y][x] + "  ";
 			}
 			string += "\n";
 		}
@@ -43,29 +43,29 @@ public class Minesweeper
 		int currentPosition = 0;
 		int currentMine = 0;
 
-		for (int i = 0; i < field.length; i++)
+		for (int y = 0; y < field.length; y++)
 		{
-			for (int j = 0; j < field[i].length; j++)
+			for (int x = 0; x < field[y].length; x++)
 			{
 				if (currentMine < mines.length && currentPosition == mines[currentMine])
 				{
-					field[i][j] = 9;
+					field[y][x] = 9;
 
 					// Find neighbors and increase their number if they're not a mine.
-					for (int k = -1; k < 2; k++)
+					for (int yOffset = -1; yOffset < 2; yOffset++)
 					{
-						for (int l = -1; l < 2; l++)
+						for (int xOffset = -1; xOffset < 2; xOffset++)
 						{
-							if (k == 0 && l == 0)
+							if (yOffset == 0 && xOffset == 0)
 							{
 								continue;
 							}
 
-							if (k + i >= 0 && k + i < field.length && l + j >= 0 && l + j < field[i].length)
+							if (y + yOffset >= 0 && y + yOffset < field.length && x + xOffset >= 0 && x + xOffset < field[y].length)
 							{
-								if (field[i + k][j + l] != 9)
+								if (field[y + yOffset][x + xOffset] != 9)
 								{
-									field[i + k][j + l]++;
+									field[y + yOffset][x + xOffset]++;
 								}
 							}
 						}
